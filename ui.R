@@ -8,5 +8,8 @@ ui <- fluidPage(
     column(4, selectInput("var2", "y", variables))
   ),
   
-  plotOutput("plot1")
+  fluidRow(
+    column(2, textOutput("corVal")),
+    column(6, plotOutput("plot1"))
+  )
 )
