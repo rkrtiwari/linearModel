@@ -14,10 +14,19 @@ server <- function(input, output){
     lines(x(), ypred, col = "blue")
   })
   
- output$corVal <- renderPrint({
+  output$corVal <- renderPrint({
    cor(x(),y())
  })
  
+ output$coeff1 <- renderText({
+   mtModel <- lm(y() ~ x())
+   mtModel$coefficients[1]
+ })
  
+ 
+ output$coeff2 <- renderText({
+   mtModel <- lm(y() ~ x())
+   mtModel$coefficients[2]
+ })
  
 }

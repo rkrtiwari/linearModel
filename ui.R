@@ -9,7 +9,21 @@ ui <- fluidPage(
   ),
   
   fluidRow(
-    column(2, textOutput("corVal")),
+    column(4, p("Correlation"))
+  ),
+  
+  fluidRow(
+    column(4, textOutput("corVal")),
     column(6, plotOutput("plot1"))
+  ),
+  
+  fluidRow(
+    column(2, p("Intercept")),
+    column(2, p("Coefficient"))
+  ),
+  
+  fluidRow(
+    column(2, textOutput("coeff1")),
+    column(2, textOutput("coeff2"))
   )
 )
