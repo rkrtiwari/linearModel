@@ -3,10 +3,10 @@ library(shiny)
 server <- function(input, output){
   
   x <- reactive({as.numeric(mtcars[[input$"var1"]])})
-  y <- reactive({as.numeric(mtcars[[input$"var1"]])})
+  y <- reactive({as.numeric(mtcars[[input$"var2"]])})
+  
   
   output$plot1 <- renderPlot({
-    
     mtModel <- lm(y() ~ x())
     ypred <- mtModel$coefficients[1] + x()*mtModel$coefficients[2]
     
@@ -16,6 +16,8 @@ server <- function(input, output){
   
  output$corVal <- renderPrint({
    cor(x(),y())
- }
- )
+ })
+ 
+ 
+ 
 }
