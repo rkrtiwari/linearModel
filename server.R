@@ -42,5 +42,19 @@ server <- function(input, output){
  })
  
  
+ output$plot3 <- renderPlot({
+   mtModel <- lm(y() ~ x())
+   n <- length(x())
+   ypred <- mtModel$coefficients[1] + x()*mtModel$coefficients[2]
+   res <- mtModel$residuals
+   
+   plot(x(), res, cex = 1.5, col = "red", pch = 19, xlab = input$"var1", ylab =  "Residual")
+   abline(h=0, lwd = 2)
+   for (i in 1:n)
+     lines(c(x()[i], x()[i]), c(res[i], 0), col = "red" , lwd = 2)
+   
+ })
+ 
+ 
  
 }

@@ -28,6 +28,7 @@ ui <- fluidPage(
   ),
   
   fluidRow(
-    column(6, plotOutput("plot2"))
+    column(5, plotOutput("plot2")),
+    column(5, plotOutput("plot3"))
   )
 )
