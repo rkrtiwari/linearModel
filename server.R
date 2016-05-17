@@ -10,7 +10,7 @@ server <- function(input, output){
     mtModel <- lm(y() ~ x())
     ypred <- mtModel$coefficients[1] + x()*mtModel$coefficients[2]
     
-    plot(x(), y(), cex = 1.5, col = "red", pch = 19)
+    plot(x(), y(), cex = 1.5, col = "red", pch = 19, xlab = input$"var1", ylab =  input$"var2")
     lines(x(), ypred, col = "blue")
   })
   
@@ -28,5 +28,19 @@ server <- function(input, output){
    mtModel <- lm(y() ~ x())
    mtModel$coefficients[2]
  })
+ 
+ output$plot2 <- renderPlot({
+   mtModel <- lm(y() ~ x())
+   n <- length(x())
+   ypred <- mtModel$coefficients[1] + x()*mtModel$coefficients[2]
+   
+   plot(x(), y(), cex = 1.5, col = "red", pch = 19, xlab = input$"var1", ylab =  input$"var2")
+   lines(x(), ypred, col = "blue")
+   for (i in 1:n)
+     lines(c(x()[i], x()[i]), c(y()[i], ypred[i]), col = "red" , lwd = 2)
+     
+ })
+ 
+ 
  
 }

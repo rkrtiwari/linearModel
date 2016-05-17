@@ -25,5 +25,9 @@ ui <- fluidPage(
   fluidRow(
     column(2, textOutput("coeff1")),
     column(2, textOutput("coeff2"))
+  ),
+  
+  fluidRow(
+    column(6, plotOutput("plot2"))
   )
 )
